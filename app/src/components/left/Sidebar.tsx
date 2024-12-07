@@ -8,7 +8,7 @@ import {
   Settings,
   Menu,
   Memory,
-  TabOutlined,
+  TabOutlined
 } from '@mui/icons-material';
 import { IoMdCube } from 'react-icons/io';
 import React from 'react';
@@ -48,7 +48,7 @@ let oldValue = 0;
 const Sidebar: React.FC<SidebarProps> = ({
   activeTab,
   setActiveTab,
-  toggleVisibility,
+  toggleVisibility
 }): JSX.Element => {
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setActiveTab(newValue);
@@ -76,8 +76,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       // onClick={(e: React.MouseEvent) => handleTabClick(e, oldValue)}
       TabIndicatorProps={{
         style: {
-          backgroundColor: '#4A4A4A',
-        },
+          backgroundColor: '#4A4A4A'
+        }
       }}
       sx={{
         display: 'flex',
@@ -88,18 +88,18 @@ const Sidebar: React.FC<SidebarProps> = ({
         width: '70px',
         background: '#1e2024',
         marginRight: '2px',
-        height: '100vh',
+        height: '100vh'
       }}
     >
       <Tab sx={{ position: 'absolute', visibility: 'hidden' }} value={null} />
       <Tab
         sx={{
-          color: activeTab === 0 ? '#E4E4E5' : '#9C9D9F',
+          color: activeTab === 0 ? '#f08c00' : '#a45f00',
           backgroundColor: activeTab === 0 && '#2D313A',
-          '&.Mui-selected': { color: '#E4E4E5' },
-          '&:hover': { color: '#e9e9e9' },
+          '&.Mui-selected': { color: '#ffae3e' },
+          '&:hover': { color: '#ffae3e' },
           fontSize: '11px',
-          textTransform: 'none',
+          textTransform: 'none'
         }}
         icon={<AddBox sx={{ fontSize: '26px' }} />}
         value={0}
@@ -107,12 +107,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       />
       <Tab
         sx={{
-          color: activeTab === 4 ? '#E4E4E5' : '#9C9D9F',
+          color: activeTab === 4 ? '#f08c00' : '#a45f00',
           backgroundColor: activeTab === 4 && '#2D313A',
-          '&.Mui-selected': { color: '#E4E4E5' },
-          '&:hover': { color: '#e9e9e9' },
+          '&.Mui-selected': { color: '#ffae3e' },
+          '&:hover': { color: '#ffae3e' },
           fontSize: '11px',
-          textTransform: 'none',
+          textTransform: 'none'
         }}
         icon={<TabOutlined sx={{ fontSize: '26px' }} />}
         value={4}
@@ -120,12 +120,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       />
       <Tab
         sx={{
-          color: activeTab === 1 ? '#E4E4E5' : '#9C9D9F',
+          color: activeTab === 1 ? '#f08c00' : '#a45f00',
           backgroundColor: activeTab === 1 && '#2D313A',
-          '&.Mui-selected': { color: '#E4E4E5' },
-          '&:hover': { color: '#e9e9e9' },
+          '&.Mui-selected': { color: '#ffae3e' },
+          '&:hover': { color: '#ffae3e' },
           fontSize: '11px',
-          textTransform: 'none',
+          textTransform: 'none'
         }}
         icon={<IoMdCube style={{ fontSize: '25px' }} />}
         value={1}
@@ -133,12 +133,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       />
       <Tab
         sx={{
-          color: activeTab === 2 ? '#E4E4E5' : '#9C9D9F',
+          color: activeTab === 2 ? '#f08c00' : '#a45f00',
           backgroundColor: activeTab === 2 && '#2D313A',
-          '&.Mui-selected': { color: '#E4E4E5' },
-          '&:hover': { color: '#e9e9e9' },
+          '&.Mui-selected': { color: '#ffae3e' },
+          '&:hover': { color: '#ffae3e' },
           fontSize: '11px',
-          textTransform: 'none',
+          textTransform: 'none'
         }}
         icon={<Groups2 sx={{ fontSize: '28px' }} />}
         value={2}
@@ -146,12 +146,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       />
       <Tab
         sx={{
-          color: activeTab === 3 ? '#E4E4E5' : '#9C9D9F',
+          color: activeTab === 3 ? '#f08c00' : '#a45f00',
           backgroundColor: activeTab === 3 && '#2D313A',
-          '&.Mui-selected': { color: '#E4E4E5' },
-          '&:hover': { color: '#e9e9e9' },
+          '&.Mui-selected': { color: '#ffae3e' },
+          '&:hover': { color: '#ffae3e' },
           fontSize: '11px',
-          textTransform: 'none',
+          textTransform: 'none'
         }}
         icon={<AccountBox sx={{ fontSize: '26px' }} />}
         value={3}

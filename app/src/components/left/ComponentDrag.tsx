@@ -5,6 +5,8 @@ import { RootState } from '../../redux/store';
 import makeStyles from '@mui/styles/makeStyles';
 import { useSelector } from 'react-redux';
 import ComponentPanelItem from '../right/ComponentPanelItem';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 const useStyles = makeStyles({
   panelWrapper: {
@@ -12,17 +14,17 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     flexGrow: 1,
-    overflow: 'auto',
+    overflow: 'auto'
   },
   panelWrapperList: {
-    minHeight: 'auto',
+    minHeight: 'auto'
   },
   lightThemeFontColor: {
-    color: '#fff',
+    color: '#fff'
   },
   darkThemeFontColor: {
-    color: '#00008B,',
-  },
+    color: '#00008B,'
+  }
 });
 
 /**
@@ -38,7 +40,8 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
   const classes = useStyles();
   const state = useSelector((store: RootState) => store.appState);
 
-  const isFocus = (targetId: number) => (state.canvasFocus.componentId === targetId ? true : false);
+  const isFocus = (targetId: number) =>
+    state.canvasFocus.componentId === targetId ? true : false;
 
   if (!isVisible) return null;
 
@@ -50,13 +53,21 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
             ? 'Pages'
             : ''}
         </h4>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
+        <Stack
+          spacing={2}
+          // container
+          // direction="row"
+          // justifyContent="center"
+          // alignItems="center"
         >
-          {state.components
+          {' '}
+          <TextField
+            label="HTML Element Tag"
+            id="outlined-size-small"
+            defaultValue=""
+            size="small"
+          />
+          {/* {state.components
             .filter((comp) => state.rootComponents.includes(comp.id))
             .map((comp) => {
               return (
@@ -69,8 +80,8 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
                   isThemeLight={isThemeLight}
                 />
               );
-            })}
-        </Grid>
+            })} */}
+        </Stack>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import {
   Theme,
   ThemeProvider
 } from '@mui/material/styles';
-import { theme1, theme2 } from '../public/styles/theme';
+import { theme1, theme2, themeOptions } from '../public/styles/theme';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LeftContainer from './LeftContainer';

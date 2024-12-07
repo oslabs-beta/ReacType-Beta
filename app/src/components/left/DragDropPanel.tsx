@@ -13,16 +13,18 @@ import { RootState } from '../../redux/store';
 import MUIItem from './MUIItem';
 import HTMLItem from './HTMLItem';
 import ComponentDrag from './ComponentDrag';
+import Box from '@mui/material/Box';
+import Popper from '@mui/material/Popper';
 
 const useStyles = makeStyles({
   accordion: {
     backgroundColor: '#0b0b0b', // Set the background color to gray
-    color: '#ffffff', // Set the text color to white
+    color: '#ffffff' // Set the text color to white
   },
   accordionSummary: {
     backgroundColor: '#101012', // Set the background color of the summary to gray
-    color: '#ffffff', // Set the text color of the summary to white
-  },
+    color: '#ffffff' // Set the text color of the summary to white
+  }
 });
 
 /**
@@ -50,18 +52,44 @@ const DragDropPanel = (props): JSX.Element => {
     if (roomCode) {
       emitEvent('deleteElementAction', roomCode, {
         id,
-        contextParam,
+        contextParam
       });
     }
   };
 
   const htmlTypesToRender = state.HTMLTypes.filter(
-    (type) => type.name !== 'separator',
+    (type) => type.name !== 'separator'
   );
 
   const muiTypesToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator',
+    (type) => type.name !== 'separator'
   );
+
+  let htmlTypes = [];
+  htmlTypes = htmlTypesToRender.map((option) => {
+    if (
+      !['Switch', 'LinkTo', 'LinkHref', 'Image', 'Route'].includes(
+        option.name
+      ) &&
+      !['Header'].includes(option.name)
+    ) {
+      return (
+        <HTMLItem
+          name={option.name}
+          key={`html-${option.name}`}
+          id={option.id}
+          icon={option.icon}
+          handleDelete={handleDelete}
+        />
+      );
+    } else if (option.name === 'Header') {
+      return (
+        <>
+          <Popper opt={option} handleDelete={handleDelete} />
+        </>
+      );
+    }
+  });
 
   return (
     <div className={'HTMLItems'}>
@@ -89,33 +117,17 @@ const DragDropPanel = (props): JSX.Element => {
             id="panel1a-header"
             className={classes.accordionSummary}
           >
-            <h3>HTML Elements</h3>
+            <h3>Content</h3>
           </AccordionSummary>
           <AccordionDetails
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
-              {htmlTypesToRender.map((option) => {
-                if (
-                  !['Switch', 'LinkTo', 'LinkHref', 'Image', 'Route'].includes(
-                    option.name,
-                  )
-                ) {
-                  return (
-                    <HTMLItem
-                      name={option.name}
-                      key={`html-${option.name}`}
-                      id={option.id}
-                      icon={option.icon}
-                      handleDelete={handleDelete}
-                    />
-                  );
-                }
-              })}
+              {htmlTypes}
             </Grid>
           </AccordionDetails>
         </Accordion>
@@ -134,7 +146,7 @@ const DragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
