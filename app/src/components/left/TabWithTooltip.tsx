@@ -14,12 +14,12 @@ const TabWithTooltip: React.FC<TabWithTooltipProps> = ({
   label,
   value,
   activeTab,
-  handleTabChange,
+  handleTabChange
 }) => {
   let iconType;
   if (value === 0) {
     iconType = <Folder sx={{ fontSize: '25px' }} />;
-  } else if (value === 1) {
+  } else if (value === 4) {
     iconType = <AddBox sx={{ fontSize: '26px' }} />;
   } else if (value === 2) {
     iconType = <Groups2 sx={{ fontSize: '28px' }} />;
@@ -32,7 +32,7 @@ const TabWithTooltip: React.FC<TabWithTooltipProps> = ({
       <Tooltip label={label} isCollabTab={isCollabTab}>
         <Tab
           sx={{
-            color: activeTab === value ? '#f88e16' : '#9C9D9F',
+            color: activeTab === value ? '#f88e16' : '#a45f00',
             backgroundColor: activeTab === value && '#2D313A',
             '&.Mui-selected': { color: '#f88e16' },
             '&:hover': { color: '#f88e16' },
@@ -40,7 +40,7 @@ const TabWithTooltip: React.FC<TabWithTooltipProps> = ({
             textTransform: 'none',
             position: isCollabTab ? 'absolute' : 'relative',
             bottom: isCollabTab ? '80px' : 'auto',
-            opacity: 1,
+            opacity: 1
           }}
           icon={iconType}
           value={value}
