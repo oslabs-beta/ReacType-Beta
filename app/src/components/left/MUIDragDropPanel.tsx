@@ -17,12 +17,12 @@ import { deleteElement } from '../../redux/reducers/slice/appStateSlice';
 const useStyles = makeStyles({
   accordion: {
     backgroundColor: '#0b0b0b', // Set the background color to gray
-    color: '#ffffff', // Set the text color to white
+    color: '#ffffff' // Set the text color to white
   },
   accordionSummary: {
     backgroundColor: '#101012', // Set the background color of the summary to gray
-    color: '#ffffff', // Set the text color of the summary to white
-  },
+    color: '#ffffff' // Set the text color of the summary to white
+  }
 });
 
 /**
@@ -48,41 +48,46 @@ const MUIDragDropPanel = (props): JSX.Element => {
     if (roomCode) {
       emitEvent('deleteElementAction', roomCode, {
         id,
-        contextParam,
+        contextParam
       });
     }
   };
 
+  //
+  const visualComponent = [...state.HTMLtypes, ...state.MUITypes].filter(
+    (type) =>
+      ['Image List', 'Icons', 'Avatar', 'Badges', 'Img'].includes(type.name)
+  );
   const htmlTypesToRender = state.HTMLTypes.filter(
-    (type) => type.name !== 'separator',
+    (type) => type.name !== 'separator'
   );
 
   const muiInputToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 21 && type.id <= 33,
+    (type) => type.name !== 'separator' && type.id >= 21 && type.id <= 33
   );
 
   const muiDataDisplayToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 34 && type.id <= 43,
+    (type) => type.name !== 'separator' && type.id >= 34 && type.id <= 43
   );
 
   const muiFeedbackToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 44 && type.id <= 49,
+    (type) => type.name !== 'separator' && type.id >= 44 && type.id <= 49
   );
 
   const muiSurfacesToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 50 && type.id <= 53,
+    (type) => type.name !== 'separator' && type.id >= 50 && type.id <= 53
   );
 
   const muiNavigationToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 54 && type.id <= 62,
+    (type) => type.name !== 'separator' && type.id >= 54 && type.id <= 62
   );
 
   const muiLayoutToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 63 && type.id <= 70,
+    (type) => type.name !== 'separator' && type.id >= 63 && type.id <= 70
   );
 
   const muiUtilsToRender = state.MUITypes.filter(
-    (type) => type.name !== 'separator' && type.id >= 71 && type.id <= 80,
+    (type) => type.name !== 'separator' && type.id >= 71 && type.id <= 80
   );
 
   return (
@@ -103,7 +108,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
           </AccordionDetails>
         </Accordion>
 
-        {/* Inputs Components */}
+        {/* Visual Components */}
         <Accordion className={classes.accordion}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -111,18 +116,18 @@ const MUIDragDropPanel = (props): JSX.Element => {
             id="panel2a-header"
             className={classes.accordionSummary}
           >
-            <h3>Inputs</h3>
+            <h3>Visual</h3>
           </AccordionSummary>
           <AccordionDetails
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
-              {muiInputToRender.map((option) => {
-                return (
+              {muiInputToRender.map((option) =>
+                option.placeHolderLong.includes('UI') ? (
                   <MUIItem
                     name={option.name}
                     key={`mui-${option.name}`}
@@ -130,8 +135,16 @@ const MUIDragDropPanel = (props): JSX.Element => {
                     icon={option.icon}
                     handleDelete={handleDelete}
                   />
-                );
-              })}
+                ) : (
+                  <HTMLItem
+                    name={option.name}
+                    key={`html-${option.name}`}
+                    id={option.id}
+                    icon={option.icon}
+                    handleDelete={handleDelete}
+                  />
+                )
+              )}
             </Grid>
           </AccordionDetails>
         </Accordion>
@@ -150,7 +163,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
@@ -183,7 +196,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
@@ -216,7 +229,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
@@ -249,7 +262,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
@@ -282,7 +295,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
@@ -315,7 +328,7 @@ const MUIDragDropPanel = (props): JSX.Element => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'space-around',
+              alignItems: 'space-around'
             }}
           >
             <Grid container justifyContent="space-around" columnSpacing={2}>
