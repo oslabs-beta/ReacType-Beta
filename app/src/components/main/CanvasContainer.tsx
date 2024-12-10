@@ -190,6 +190,7 @@ function CanvasContainer(props: CanvasContainerProps): JSX.Element {
       ) : (
         <Canvas zoom={zoom} ref={containerRef} />
       )}
+      {modal}
     </div>
   );
 }
