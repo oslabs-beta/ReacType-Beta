@@ -31,10 +31,10 @@ const TabWithTooltip: React.FC<TabWithTooltipProps> = ({
     <Tooltip label={label} isCollabTab={isCollabTab}>
       <Tab
         sx={{
-          color: activeTab === value ? '#f88e16' : '#9C9D9F',
+          color: activeTab === value ? '#ef6c00' : '#9C9D9F',
           backgroundColor: activeTab === value && '#2D313A',
-          '&.Mui-selected': { color: '#f88e16' },
-          '&:hover': { color: '#f88e16' },
+          '&.Mui-selected': { color: '#ef6c00' },
+          '&:hover': { color: '#ef6c00' },
           fontSize: '11px',
           textTransform: 'none',
           position: isCollabTab ? 'absolute' : 'relative',

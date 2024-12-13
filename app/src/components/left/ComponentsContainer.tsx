@@ -53,18 +53,18 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    flexGrow: 1,
-    overflow: 'auto',
+    flexGrow: 1
+    // overflow: 'auto',
   },
   panelWrapperList: {
-    minHeight: 'auto',
+    minHeight: 'auto'
   },
   lightThemeFontColor: {
-    color: '#fff',
+    color: '#fff'
   },
   darkThemeFontColor: {
-    color: '#fff',
-  },
+    color: '#fff'
+  }
 });
 
 export default ComponentsContainer;

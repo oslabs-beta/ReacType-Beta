@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  Button,
-} from '@mui/material';
+import { Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ComponentDrag from './ComponentDrag';
 import ComponentPanel from '../right/ComponentPanel';
@@ -23,18 +21,18 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
   };
 
   // Add an edit icon on each module ⭕️
-        // When edit icon is clicked open up create tab for that module ⭕️
+  // When edit icon is clicked open up create tab for that module ⭕️
   // Fix alert pop-up (not showing after module creation due to state change causing re-render) ⭕️
-    // May need to move alert functionality to this component & display after setIsCreatingModule is set to false - maybe useEffect ⭕️
+  // May need to move alert functionality to this component & display after setIsCreatingModule is set to false - maybe useEffect ⭕️
   // Fix component creation panel design ⭕️
   // Add an x button to Module Creator panel ✅
   // Fix tooltip ⭕️
   // Open Module editor when clicking on a component ❌
-  // should pass prop of the selected module ❌                    
+  // should pass prop of the selected module ❌
 
   return (
     <div>
-     {isCreatingModule ? (
+      {isCreatingModule ? (
         <ComponentPanel
           setIsCreatingModule={setIsCreatingModule}
           isThemeLight={false}
@@ -45,7 +43,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
             variant="contained"
             startIcon={<AddCircleIcon />}
             style={{
-              backgroundColor: '#f88e16',
+              backgroundColor: '#ef6c00',
               border: 'none',
               color: 'white',
               fontSize: '12px',
@@ -63,7 +61,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
       )}
       <div
         style={{
-          color: '#f88e16',
+          color: '#ef6c00',
           textAlign: 'center',
           padding: '20px',
           border: '1px solid #101012'
@@ -74,7 +72,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
       <ComponentDrag isVisible={true} isThemeLight={false} />
       <div
         style={{
-          color: '#f88e16',
+          color: '#ef6c00',
           textAlign: 'center',
           padding: '20px',
           border: '1px solid #101012'

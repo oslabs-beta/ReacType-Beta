@@ -177,7 +177,7 @@ const ComponentPanel = ({ setIsCreatingModule, isThemeLight }): JSX.Element => {
           className={classes.addComponentWrapper}
           style={{
             border: '2px solid #101012',
-            backgroundColor: '#f88e16'
+            backgroundColor: '#ef6c00'
           }}
         >
           <h4
@@ -287,7 +287,7 @@ const ComponentPanel = ({ setIsCreatingModule, isThemeLight }): JSX.Element => {
                 sx={{
                   textTransform: 'capitalize',
                   margin: '20px',
-                  backgroundColor: '#f88e16 !important',
+                  backgroundColor: '#ef6c00 !important',
                   color: 'white !important',
                   border: '2px solid white !important'
                 }}

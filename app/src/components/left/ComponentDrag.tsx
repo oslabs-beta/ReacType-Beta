@@ -12,17 +12,17 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     flexGrow: 1,
-    overflow: 'auto',
+    overflow: 'auto'
   },
   panelWrapperList: {
-    minHeight: 'auto',
+    minHeight: 'auto'
   },
   lightThemeFontColor: {
-    color: '#fff',
+    color: '#fff'
   },
   darkThemeFontColor: {
-    color: '#00008B,',
-  },
+    color: '#00008B,'
+  }
 });
 
 /**
@@ -38,7 +38,8 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
   const classes = useStyles();
   const state = useSelector((store: RootState) => store.appState);
 
-  const isFocus = (targetId: number) => (state.canvasFocus.componentId === targetId ? true : false);
+  const isFocus = (targetId: number) =>
+    state.canvasFocus.componentId === targetId ? true : false;
 
   if (!isVisible) return null;
 
@@ -55,7 +56,7 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          width='100vw'
+          width="100vw"
         >
           {state.components
             .filter((comp) => state.rootComponents.includes(comp.id))

@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     color: 'white',
     '&:hover': {
-      color: '#f88e16'
+      color: '#ef6c00'
     },
     fontSize: '6px'
   }
