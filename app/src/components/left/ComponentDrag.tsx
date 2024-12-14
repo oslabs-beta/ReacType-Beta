@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     color: '#fff'
   },
   darkThemeFontColor: {
-    color: '#00008B,'
+    color: '#f88e16,'
   }
 });
 
@@ -34,7 +34,11 @@ const useStyles = makeStyles({
  * @param {boolean} props.isThemeLight Indicates if the theme is light, affecting the text color styling.
  * @returns {JSX.Element | null} A styled list of draggable component items if visible, otherwise null.
  */
-const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
+const ComponentDrag = ({
+  handleClickEditModule,
+  isVisible,
+  isThemeLight
+}): JSX.Element | null => {
   const classes = useStyles();
   const state = useSelector((store: RootState) => store.appState);
 
@@ -46,14 +50,14 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
   return (
     <div className={classes.panelWrapper}>
       <div className={classes.panelWrapperList}>
-        <h4 className={classes.darkThemeFontColor}>
+        <h4 className={classes.darkThemeFontColor} style={{ color: '#f88e16' }}>
           {state.projectType === 'Next.js' || state.projectType === 'Gatsby.js'
             ? 'Pages'
-            : ''}
+            : 'Root Module(s)'}
         </h4>
         <Grid
           container
-          direction="row"
+          direction="column"
           justifyContent="center"
           alignItems="center"
           width="100vw"
@@ -69,6 +73,7 @@ const ComponentDrag = ({ isVisible, isThemeLight }): JSX.Element | null => {
                   id={comp.id}
                   root={true}
                   isThemeLight={isThemeLight}
+                  handleClickEditModule={handleClickEditModule}
                 />
               );
             })}

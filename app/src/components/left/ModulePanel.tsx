@@ -7,6 +7,7 @@ import ComponentPanel from '../right/ComponentPanel';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import ComponentsContainer from './ComponentsContainer';
+import CreateMenu from './CreateMenu';
 
 interface ModulePanelProps {
   isThemeLight: boolean;
@@ -15,8 +16,13 @@ interface ModulePanelProps {
 const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
   const state = useSelector((store: RootState) => store.appState);
   const [isCreatingModule, setIsCreatingModule] = useState(false);
+  const [isEditingModule, setIsEditingModule] = useState(false);
 
-  const handleClickAddModule = (event) => {
+  const customComponents = state.components.filter(
+    (comp) => !state.rootComponents.includes(comp.id)
+  );
+
+  const handleClickAddModule = () => {
     setIsCreatingModule(true);
   };
 
@@ -43,7 +49,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
             variant="contained"
             startIcon={<AddCircleIcon />}
             style={{
-              backgroundColor: '#ef6c00',
+              backgroundColor: '#f88e16',
               border: 'none',
               color: 'white',
               fontSize: '12px',
@@ -61,7 +67,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
       )}
       <div
         style={{
-          color: '#ef6c00',
+          color: '#f88e16',
           textAlign: 'center',
           padding: '20px',
           border: '1px solid #101012'
@@ -72,7 +78,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
       <ComponentDrag isVisible={true} isThemeLight={false} />
       <div
         style={{
-          color: '#ef6c00',
+          color: '#f88e16',
           textAlign: 'center',
           padding: '20px',
           border: '1px solid #101012'
