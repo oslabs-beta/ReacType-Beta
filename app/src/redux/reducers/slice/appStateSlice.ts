@@ -36,7 +36,7 @@ export const initialState: State = {
     }
   ],
   projectType: 'Classic React',
-  rootComponents: [1],
+  rootComponents: [1], // an array of IDs
   canvasFocus: { componentId: 1, childId: null },
   nextComponentId: 2,
   nextChildId: 1,

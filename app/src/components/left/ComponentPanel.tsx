@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+//file has been replaced by AddModule.tsx -- this file should be deleted
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';

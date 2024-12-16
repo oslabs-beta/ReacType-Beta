@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ComponentDrag from './ComponentDrag';
-import ComponentPanel from '../right/ComponentPanel';
+import AddModule from '../left/AddModule';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import ComponentsContainer from './ComponentsContainer';
@@ -39,7 +39,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
   return (
     <div>
       {isCreatingModule ? (
-        <ComponentPanel
+        <AddModule
           setIsCreatingModule={setIsCreatingModule}
           isThemeLight={false}
         />
@@ -65,17 +65,11 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
           </Button>
         </div>
       )}
-      <div
-        style={{
-          color: '#f88e16',
-          textAlign: 'center',
-          padding: '20px',
-          border: '1px solid #101012'
-        }}
-      >
-        Root Modules
-      </div>
-      <ComponentDrag isVisible={true} isThemeLight={false} />
+      <ComponentDrag
+        handleClickEditModule={handleClickEditModule}
+        isVisible={true}
+        isThemeLight={false}
+      />
       <div
         style={{
           color: '#f88e16',

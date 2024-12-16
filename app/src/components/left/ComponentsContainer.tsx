@@ -18,29 +18,26 @@ const ComponentsContainer = ({ handleClickEditModule }): JSX.Element => {
   const classes = useStyles();
   const state = useSelector((store: RootState) => store.appState);
 
-  const isFocus = (targetId: number) => (state.canvasFocus.componentId === targetId);
+  const isFocus = (targetId: number) =>
+    state.canvasFocus.componentId === targetId;
   return (
-    <div>
-      <div className={classes.panelWrapper}>
-        <div className={classes.panelWrapperList}>
-          {/* <h4 className={classes.darkThemeFontColor}>Reusable Components</h4> */}
-          <Grid container direction="column" alignContent={'center'}>
-            {state.components
-              .filter((comp) => !state.rootComponents.includes(comp.id))
-              .map((comp) => (
-                  <ComponentPanelItem
-                    isFocus={isFocus(comp.id)}
-                    key={`comp-${comp.id}`}
-                    name={comp.name}
-                    id={comp.id}
-                    root={false}
-                    isThemeLight={false}
-                    handleClickEditModule = {handleClickEditModule}
-                  />
-              ))}
-          </Grid>
-        </div>
-      </div>
+    <div className={classes.panelWrapperList}>
+      {/* <h4 className={classes.darkThemeFontColor}>Reusable Components</h4> */}
+      <Grid container direction="column" alignContent={'center'}>
+        {state.components
+          .filter((comp) => !state.rootComponents.includes(comp.id))
+          .map((comp) => (
+            <ComponentPanelItem
+              isFocus={isFocus(comp.id)}
+              key={`comp-${comp.id}`}
+              name={comp.name}
+              id={comp.id}
+              root={false}
+              isThemeLight={false}
+              handleClickEditModule={handleClickEditModule}
+            />
+          ))}
+      </Grid>
     </div>
   );
 };
