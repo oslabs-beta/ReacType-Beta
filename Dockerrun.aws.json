@@ -1,19 +1,12 @@
 {
-  "AWSEBDockerrunVersion": "1",
+  "AWSEBDockerrunVersion": "2",
   "Image": {
-    "Name": "035101486432.dkr.ecr.us-east-1.amazonaws.com/reactype-2stage:latest",
+    "Name": "767397683141.dkr.ecr.us-east-1.amazonaws.com/mm:<VERSION>",
     "Update": "true"
   },
   "Ports": [
     {
-      "hostPort": "80",
-      "containerPort": "5656"
-    }
-  ],
-  "Environment": [
-    {
-      "Name": "API_BASE_URL",
-      "Value": "Reactype-v19env.eba-sw2fhsbj.us-east-1.elasticbeanstalk.com"
+      "ContainerPort": "3000"
     }
   ]
 }
