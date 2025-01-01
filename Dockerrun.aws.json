@@ -6,7 +6,8 @@
   },
   "Ports": [
     {
-      "ContainerPort": "5656"
+      "hostPort": "80",
+      "containerPort": "5656"
     }
   ],
   "Environment": [
