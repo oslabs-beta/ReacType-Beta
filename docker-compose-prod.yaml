@@ -1,5 +1,0 @@
-version: '3.8'
-services:
-  echo-service:
-    image: busybox
-    command: ['sh', '-c', 'echo Hello, Docker Compose!']
