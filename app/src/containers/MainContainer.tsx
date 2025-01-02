@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import html2canvas from 'html2canvas';
 import { Buffer } from 'buffer';
@@ -42,7 +42,8 @@ const MainContainer = (props): JSX.Element => {
   const id: string = useSelector((store: RootState) => store.appState._id);
 
   const appState = useSelector((store: RootState) => store.appState);
-  console.log(appState.canvasFocus);
+  // console.log('>>>');
+  // console.log(appState.canvasFocus);
 
   // const { style } = useSelector((store: RootState) => ({
   //   style: store.styleSlice
@@ -98,9 +99,10 @@ const MainContainer = (props): JSX.Element => {
   }, [screenshotTrigger]);
 
   // use effect for contextMenu listeners
-  useEffect(() => {
-    document.addEventListener('contextmenu', (e) => {
-      console.log(e.target);
+  const contextMenuEventListener = useCallback(
+    (e) => {
+      console.log(' enevnt listener got CALLED');
+      console.log(appState.canvasFocus);
       if (
         ContextMenuRef.current != null &&
         ContextMenuRef.current.contains(e.target)
@@ -145,12 +147,17 @@ const MainContainer = (props): JSX.Element => {
         setMouseYState(MouseYRef.current); // now trigger a re-render
         setContextMenuOpen(true);
       }
-    });
-    onmousemove = function (e) {
-      MouseXRef.current = e.clientX; // this is a use ref, not use state, so we dont trigger a re-render.
-      MouseYRef.current = e.clientY;
+    },
+    [appState.canvasFocus]
+  ); /// this is an event listener
+
+  useEffect(() => {
+    console.log('reloading');
+    window.addEventListener('contextmenu', contextMenuEventListener);
+    return () => {
+      window.removeEventListener('contextmenu', contextMenuEventListener);
     };
-  }, [contextMenuOpen]);
+  }, [contextMenuOpen, appState.canvasFocus]);
 
   // use effect for click events (to check if contextMenu is in need of closing.)
   // useEffect(() => {
@@ -158,6 +165,13 @@ const MainContainer = (props): JSX.Element => {
 
   //   });
   // }, [ContextMenuRef, contextMenuOpen]);
+
+  useEffect(() => {
+    onmousemove = function (e) {
+      MouseXRef.current = e.clientX; // this is a use ref, not use state, so we dont trigger a re-render.
+      MouseYRef.current = e.clientY;
+    };
+  });
 
   const uploadScreenshotS3 = async (imgBuffer) => {
     Amplify.configure(awsconfig);
