@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": "1",
   "Image": {
     "Name": "$EB_DOCKER_IMAGE_NAME",
-    "Update": true
+    "Update": "true"
   },
   "Ports": [
     {
