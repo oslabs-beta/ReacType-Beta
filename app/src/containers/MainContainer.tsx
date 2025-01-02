@@ -65,7 +65,7 @@ const MainContainer = (props): JSX.Element => {
 
   const [menuTypeState, setMenuTypeState] = useState('?');
 
-  const [selectedItemIdState, setSelectedItemIdState] = useState(-1);
+  const [selectedItemIdState, setSelectedItemIdState] = useState(NaN);
 
   const [contextMenuSelectedElement, setContextMenuSelectedElement] =
     useState(null);
@@ -101,6 +101,7 @@ const MainContainer = (props): JSX.Element => {
   // use effect for contextMenu listeners
   const contextMenuEventListener = useCallback(
     (e) => {
+      let selectedItemId = -1; // to hold through
       console.log(' enevnt listener got CALLED');
       console.log(appState.canvasFocus);
       if (
@@ -126,18 +127,20 @@ const MainContainer = (props): JSX.Element => {
             willGrabDefault = false;
             setMenuTypeState('?'); // set this back to unknown if you click out.
           }
-
-          setSelectedItemIdState(Number(thing.id.split('canv')[1])); // this code tells us what hypothetical reaactType item we are selected, not just which DOM element.
+          selectedItemId = Number(thing.id.split('canv')[1]);
+          setSelectedItemIdState(selectedItemId); // this code tells us what hypothetical reaactType item we are selected, not just which DOM element.
           break;
         }
       }
       if (willGrabDefault) {
         e.preventDefault(); // gdouble
+        console.log('>>>>>');
+        console.log(selectedItemIdState);
         dispatch({
           type: 'appState/changeFocus',
           payload: {
             componentId: appState.canvasFocus.componentId,
-            childId: selectedItemIdState
+            childId: selectedItemId
           }
         });
 
