@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": "1",
-  "Image": {
+  "DockerImage": {
     "Name": "ReacType-env:latest",
     "Update": "true"
   },
