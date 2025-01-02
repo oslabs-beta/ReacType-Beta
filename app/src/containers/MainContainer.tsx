@@ -134,8 +134,7 @@ const MainContainer = (props): JSX.Element => {
       }
       if (willGrabDefault) {
         e.preventDefault(); // gdouble
-        console.log('>>>>>');
-        console.log(selectedItemIdState);
+
         dispatch({
           type: 'appState/changeFocus',
           payload: {

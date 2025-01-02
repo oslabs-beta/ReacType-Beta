@@ -30,6 +30,7 @@ function ContextMenu({
 
   //@ts-ignore
   const appState = useSelector((store: RootState) => store.appState);
+
   //@ts-ignore
   const contextParam = useSelector((store: RootState) => store.contextSlice); // this is literally just passed in on everything else, i have no idea what it does, you can look it up, but other files are literally just taking it and passing it back in.
 
@@ -98,7 +99,7 @@ function ContextMenu({
     setSingleMenuValue(event.target.value);
 
     let correctChild = searchChildren(
-      appState.components[0].children,
+      appState.components[appState.canvasFocus.componentId - 1].children, // -1 is because we are converting from an is (starts at 1) and an index.
       selectedItemId
     ); // helper function below
 
@@ -137,7 +138,7 @@ function ContextMenu({
     setOpenMenu(fieldToOpen); // this one line closes other fields and opens this one
 
     let correctChild = searchChildren(
-      appState.components[0].children, // this is simply searching for the correct actual component from the dom elemnt ref
+      appState.components[appState.canvasFocus.componentId - 1].children, // this is simply searching for the correct actual component from the dom elemnt ref (also -1 is cause of 1 indexed ids to 0 indexed arrays cause whoever made the redux store was not a programmer apparently.)
       selectedItemId
     ); // helper function below
 
