@@ -1,6 +1,9 @@
 {
   "AWSEBDockerrunVersion": "1",
-  "Image": "$EB_DOCKER_IMAGE_NAME",
+  "Image": {
+    "Name": "$EB_DOCKER_IMAGE_NAME",
+    "Update": true
+  },
   "Ports": [
     {
       "ContainerPort": "5656",
