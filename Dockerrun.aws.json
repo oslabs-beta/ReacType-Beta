@@ -1,19 +1,37 @@
 {
-  "AWSEBDockerrunVersion": "1",
-  "Image": {
-    "Name": "035101486432.dkr.ecr.us-east-1.amazonaws.com/reactype-2stage:latest",
-    "Update": "true"
-  },
-  "Ports": [
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
     {
-      "hostPort": 0,
-      "containerPort": 5656
+      "name": "reacType-vol",
+      "host": {
+        "sourcePath": "/app/src"
+      }
     }
   ],
-  "Environment": [
+  "containerDefinitions": [
     {
-      "Name": "API_BASE_URL",
-      "Value": "ReacType-env.eba-sw2fhsbj.us-east-1.elasticbeanstalk.com"
+      "name": "rt-app",
+      "image": "node:21.2.0-alpine",
+      "environment": [
+        {
+          "name": "DEV_PORT",
+          "value": "5656"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 5656
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "rt-app",
+          "containerPath": "/app/src"
+        }
+      ]
     }
   ]
 }
