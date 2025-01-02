@@ -1,0 +1,18 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "ContainerDefinitions": [
+    {
+      "Name": "web",
+      "Dockerfile": "docker-compose-prod.yaml",
+      "DockerContext": ".",
+      "PortMappings": [
+        {
+          "ContainerPort": 5656,
+          "HostPort": 80,
+          "Protocol": "tcp"
+        }
+      ],
+      "Essential": true
+    }
+  ]
+}
