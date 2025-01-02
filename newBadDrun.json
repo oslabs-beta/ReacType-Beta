@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "reacType-vol",
+      "host": {
+        "sourcePath": "/app/src"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "rt-app",
+      "image": "node:21.2.0-alpine",
+      "environment": [
+        {
+          "name": "DEV_PORT",
+          "value": "5656"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 5656
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "rt-app",
+          "containerPath": "/app/src"
+        }
+      ]
+    }
+  ]
+}
