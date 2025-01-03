@@ -894,15 +894,17 @@ const CustomizationPanel = ({ isThemeLight }): JSX.Element => {
                   </FormControl>
                 </div>
               )}
-              {currFocus && Object.keys(currFocus.events).length !== 0 && (
-                <div className={'event-table'}>
-                  <DataGrid
-                    rows={eventRow}
-                    columns={eventColumnTabs}
-                    pageSize={5}
-                  />
-                </div>
-              )}
+              {currFocus &&
+                currFocus.events &&
+                Object.keys(currFocus.events).length !== 0 && (
+                  <div className={'event-table'}>
+                    <DataGrid
+                      rows={eventRow}
+                      columns={eventColumnTabs}
+                      pageSize={5}
+                    />
+                  </div>
+                )}
             </div>
           </section>
           <div

@@ -115,23 +115,23 @@ const MainContainer = (props): JSX.Element => {
       // set the focus on focus change
       let willGrabDefault = true;
       let thing = e.target; // look up th dom to see when we get to an element we like (if you right click on the span element you should still count as clicking the ReactTypeComponent element)
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         // just things that we want to stop on...
         if (!thing.id || !thing.id.match(/canv/)) {
           thing = thing.parentElement;
         } else {
-          // once were all said and done...
-          if (thing.id.match(/^canv[0-9]/)) {
-            setMenuTypeState('CanvasElement');
-          } else {
-            willGrabDefault = false;
-            setMenuTypeState('?'); // set this back to unknown if you click out.
-          }
-          selectedItemId = Number(thing.id.split('canv')[1]);
-          setSelectedItemIdState(selectedItemId); // this code tells us what hypothetical reaactType item we are selected, not just which DOM element.
           break;
         }
       }
+
+      if (thing.id.match(/^canv[0-9]/)) {
+        setMenuTypeState('CanvasElement');
+      } else {
+        willGrabDefault = false;
+        setMenuTypeState('?'); // set this back to unknown if you click out.
+      }
+      selectedItemId = Number(thing.id.split('canv')[1]);
+      setSelectedItemIdState(selectedItemId); // this code tells us what hypothetical reaactType item we are selected, not just which DOM element.
       if (willGrabDefault) {
         e.preventDefault(); // gdouble
 
