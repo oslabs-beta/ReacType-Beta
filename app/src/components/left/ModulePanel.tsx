@@ -60,7 +60,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isThemeLight }) => {
             textAlign: 'center'
           }}
         >
-          <CreatePanel key="createPanel2" />
+          <CreatePanel isThemeLight={true} />
         </div>
       ) : (
         <div

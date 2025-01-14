@@ -4,7 +4,7 @@ import {
   ThemeProvider,
   Theme,
   StyledEngineProvider,
-  useTheme,
+  useTheme
 } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import { useQuery } from '@apollo/client';
@@ -15,14 +15,12 @@ import { GET_PROJECTS } from './gqlStrings';
 import Project from './Project';
 import NavBarDash from './NavbarDash';
 import { useSelector } from 'react-redux';
-import { theme1, theme2 } from '../public/styles/theme';
-
+import { theme, theme2 } from '../public/styles/theme';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
-
 
 declare module '@mui/styles/defaultTheme' {
   interface DefaultTheme extends Theme {}
@@ -33,7 +31,7 @@ declare module '@mui/styles/defaultTheme' {
 // 2) useQuery hook will update the data stored in Apollo Client's cache and automatically trigger child components rendering
 
 // setting light and dark themes (navbar and background); linked to theme.ts
-const lightTheme = theme1;
+const lightTheme = theme;
 const darkTheme = theme2; // dark mode color in theme.ts not reached
 
 /**
@@ -44,19 +42,20 @@ const darkTheme = theme2; // dark mode color in theme.ts not reached
  * @param {Array} arr - An array of project objects, where each object contains project data.
  * @returns {Array<JSX.Element>} An array of <Project> components populated with data from the input array.
  */
-const arrToComponent = (arr): Array<JSX.Element> => arr.map((proj, index) => (
-  <Project
-    key={index}
-    name={proj.name}
-    likes={proj.likes}
-    published={proj.published}
-    userId={proj.userId}
-    username={proj.username}
-    createdAt={proj.createdAt}
-    id={proj.id}
-    comments={proj.comments}
-  />
-));
+const arrToComponent = (arr): Array<JSX.Element> =>
+  arr.map((proj, index) => (
+    <Project
+      key={index}
+      name={proj.name}
+      likes={proj.likes}
+      published={proj.published}
+      userId={proj.userId}
+      username={proj.username}
+      createdAt={proj.createdAt}
+      id={proj.id}
+      comments={proj.comments}
+    />
+  ));
 
 /**
  * Generates accessibility props for a tab component within a tab panel. These properties help in
@@ -67,7 +66,7 @@ const arrToComponent = (arr): Array<JSX.Element> => arr.map((proj, index) => (
  */
 const a11yProps = (index: any): object => ({
   id: `vertical-tab-${index}`,
-  'aria-controls': `vertical-tabpanel-${index}`,
+  'aria-controls': `vertical-tabpanel-${index}`
 });
 
 interface LinkTabProps {
@@ -102,11 +101,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    display: 'flex'
   },
   tabs: {
     // borderRight: `1px solid ${theme.palette.divider}`
-  },
+  }
 }));
 
 /**
@@ -170,7 +169,7 @@ const ProjectContainer = (): JSX.Element => {
   // useQuery hook abstracts fetch request
   const { loading, error, data } = useQuery(GET_PROJECTS, {
     pollInterval: 2000,
-    variables: myVar,
+    variables: myVar
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :{error}</p>;
@@ -182,8 +181,10 @@ const ProjectContainer = (): JSX.Element => {
   const userProjects = projects.filter((proj) => proj.username === username);
   // checking which sorting method was selected from drop down menu and invoking correct sorting function
   if (selectedOption === 'DATE') sortedProjects = sortByDate(sortedProjects);
-  else if (selectedOption === 'USER') sortedProjects = sortByUser(sortedProjects);
-  else if (selectedOption === 'RATING') sortedProjects = sortByRating(sortedProjects);
+  else if (selectedOption === 'USER')
+    sortedProjects = sortByUser(sortedProjects);
+  else if (selectedOption === 'RATING')
+    sortedProjects = sortByRating(sortedProjects);
   // create array to hold the components Project of loggin-in users
   // generate an array of Project components based on queried data
   const userDisplay = arrToComponent(userProjects);

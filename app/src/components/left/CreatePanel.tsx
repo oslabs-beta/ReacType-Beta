@@ -27,7 +27,7 @@ import HeaderButton from './HeaderButton';
  * @returns {JSX.Element} The MUIDragDropPanel component, which renders an interactive list of MUI components categorized by function.
  */
 
-const CreatePanel = (props): JSX.Element => {
+const CreatePanel = (props): React.JSX.Element => {
   const dispatch = useDispatch();
   const state = useSelector((store: RootState) => store.appState);
   const contextParam = useSelector((store: RootState) => store.contextSlice);
@@ -60,7 +60,7 @@ const CreatePanel = (props): JSX.Element => {
   // create a function to which you can pass in an array of strings, search
   // both state.HTMLTypes and state.MUITypes to see if any of their type.names match
   // an item in the array and return the item if so, depending on which list it originates from.
-  const findTypes = function (array) {
+  const findTypes = function (array: string[]): React.JSX.Element[] {
     if (MUIMode === true)
       return state.HTMLTypes.filter((type) => array.includes(type.name))
         .map((option) => (

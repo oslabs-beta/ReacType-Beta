@@ -49,16 +49,22 @@ const useStyles = makeStyles({
  *
  * @returns {JSX.Element} The rendered HTML item component.
  */
-const HTMLItem: React.FC<{
+
+type AppProps = {
   name: string;
   id: number;
   icon: any;
   handleDelete: (id: number) => void;
-}> = ({ name, id, icon, handleDelete }): JSX.Element => {
+};
+
+const HTMLItem = ({
+  name,
+  id,
+  icon,
+  handleDelete
+}: AppProps): React.JSX.Element => {
   const IconComponent = Icons[icon];
-
   const roomCode = useSelector((store: RootState) => store.roomSlice.roomCode); // current roomCode
-
   const classes = useStyles();
   const [modal, setModal] = useState(null);
   const [{ isDragging }, drag] = useDrag({

@@ -5,7 +5,7 @@ import {
   Theme,
   ThemeProvider
 } from '@mui/material/styles';
-import { theme1, theme2 } from '../public/styles/theme';
+import { theme, theme2 } from '../public/styles/theme';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LeftContainer from './LeftContainer';
@@ -18,9 +18,15 @@ import { RootState } from '../redux/store';
 import { setStyle } from '../redux/reducers/slice/styleSlice';
 import { useHistory } from 'react-router-dom';
 
-declare module '@mui/styles/defaultTheme' {
+declare module '@mui/material/styles' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
+  interface Theme {
+    status: { danger: string };
+  }
+
+  interface ThemeOptions {
+    status?: { danger?: string };
+  }
 }
 
 declare module '@mui/styles/defaultTheme' {
@@ -28,7 +34,7 @@ declare module '@mui/styles/defaultTheme' {
 }
 
 // setting light and dark themes (navbar and background); linked to theme.ts
-const lightTheme = theme1;
+const orangeTheme = theme;
 const darkTheme = theme2; // dark mode color in theme.ts not reached
 
 /**
@@ -57,7 +63,7 @@ const AppContainer: React.FC = () => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={orangeTheme}>
         <div>
           <NavBar />
         </div>
