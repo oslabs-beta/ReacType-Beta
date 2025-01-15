@@ -1,5 +1,5 @@
 const isProduction = process.env.NODE_ENV === 'production';
-
+// this apprears that we are using only the production configs? or is this ok, i actually thnk localhost is ok to listen on??
 const serverConfig = {
   DEV_PORT: 5656,
   API_BASE_URL: isProduction
