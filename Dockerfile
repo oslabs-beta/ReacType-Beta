@@ -66,7 +66,7 @@ ENV PORT=5656
 EXPOSE 5656
 
 ENV IS_DOCKER=true
-
+ENV NODE_ENV='production'
 ENV VIDEOSDK='vidsdk'
 
 
