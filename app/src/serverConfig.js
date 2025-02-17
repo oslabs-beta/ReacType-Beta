@@ -4,11 +4,11 @@ const serverConfig = {
   DEV_PORT: 5656,
   API_BASE_URL: isProduction
     ? 'http://reactype.us-east-1.elasticbeanstalk.com'
-    : 'http://localhost:9999',
+    : 'http://reactype.us-east-1.elasticbeanstalk.com',
   // : 'http://localhost:8080',
   API_BASE_URL2: isProduction
     ? 'http://reactype.us-east-1.elasticbeanstalk.com'
-    : 'http://localhost:9999'
+    : 'http://reactype.us-east-1.elasticbeanstalk.com'
 };
 // module.exports = config;
 
