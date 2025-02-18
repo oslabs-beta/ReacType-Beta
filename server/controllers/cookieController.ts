@@ -12,24 +12,18 @@ const cookieController: CookieController = {
    */
   setSSIDCookie: (req, res, next): void => {
     // set cookie with key 'ssid' and value to user's id
-    console.log('>>>>>>>>');
-    console.log('cooking');
-    console.log(res);
-    console.log(req);
+
     res.cookie('ssid', res.locals.id, {
       httpOnly: true,
-      sameSite: 'none'
-      //secure: true // this was the whole issue, because people were testing this in a dev port which is HTTP, but auto-trusted, then we switched to an aws url which is not auto trusted.
+      //sameSite: 'none',
+      secure: false // this was the whole issue, because people were testing this in a dev port which is HTTP, but auto-trusted, then we switched to an aws url which is not auto trusted.
       //maxAge: 60 * 60 * 1000 * 24  //uncomment to set expiration of cookies, but make sure there is something in place to expire local storage info too
     });
-    console.log('set ssid to ');
-    console.log(res);
-    console.log(req);
 
     res.cookie('username', res.locals.username, {
       httpOnly: true,
-      sameSite: 'none'
-      //secure: true // again, this only works if you are HTTPS or on dev port
+      //sameSite: 'none',
+      secure: false // again, this only works if you are HTTPS or on dev port
     });
     return next();
   },

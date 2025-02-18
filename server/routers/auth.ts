@@ -40,14 +40,14 @@ router.get(
   (req: UserReq, res) => {
     res.cookie('ssid', req.user.id, {
       httpOnly: true,
-      sameSite: 'none'
-      //secure: true // AGAIN, this dont work unless you are HTTPS or DEV port
+      //sameSite: 'none',
+      secure: false // AGAIN, this dont work unless you are HTTPS or DEV port
     });
 
     res.cookie('username', req.user.username, {
       httpOnly: true,
-      sameSite: 'none'
-      // secure: true // only on localhost
+      //sameSite: 'none',
+      secure: false // only on localhost
     });
     return res.redirect(API_BASE_URL2);
   }
@@ -77,14 +77,14 @@ router.get(
   (req: UserReq, res) => {
     res.cookie('ssid', req.user.id, {
       httpOnly: true,
-      sameSite: 'none'
-      //secure: true // only works on https or localhost
+      //sameSite: 'none',
+      secure: false // only works on https or localhost
     });
 
     res.cookie('username', req.user.username, {
       httpOnly: true,
-      sameSite: 'none'
-      //secure: true //// only works on https or localhost
+      //sameSite: 'none',
+      secure: false //// only works on https or localhost
     });
     return res.redirect(API_BASE_URL2);
   }
