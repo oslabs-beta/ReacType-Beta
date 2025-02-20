@@ -70,11 +70,17 @@ router.get(
  * @param {UserReq} req - The request object from Express extended with user information.
  * @param {express.Response} res - The response object from Express.
  */
+let i = 0;
+
 router.get(
   '/google/callback',
+
   passport.authenticate('google'),
+
   sessionController.startSession,
+
   (req: UserReq, res) => {
+    console.log('res.cookieing');
     res.cookie('ssid', req.user.id, {
       httpOnly: true,
       //sameSite: 'none',
@@ -86,6 +92,7 @@ router.get(
       //sameSite: 'none',
       secure: false //// only works on https or localhost
     });
+
     return res.redirect(API_BASE_URL2);
   }
 );
