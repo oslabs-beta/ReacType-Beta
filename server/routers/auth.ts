@@ -71,14 +71,19 @@ router.get(
  * @param {express.Response} res - The response object from Express.
  */
 let i = 0;
-
+function prnt(req, res, next) {
+  console.log(req);
+  console.log(res);
+  console.log(i++);
+  next();
+}
 router.get(
   '/google/callback',
-
+  prnt,
   passport.authenticate('google'),
-
+  prnt,
   sessionController.startSession,
-
+  prnt,
   (req: UserReq, res) => {
     console.log('res.cookieing');
     res.cookie('ssid', req.user.id, {
