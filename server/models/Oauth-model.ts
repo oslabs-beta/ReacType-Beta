@@ -9,7 +9,7 @@ interface UserDocument extends Document {
 const userSchema = new mongoose.Schema<UserDocument>({
   username: { type: String },
   githubId: { type: String }, // removed unique constraint because you can have null values.
-  googleId: { type: String } // unique:true
+  googleId: { type: String } // unique:true // if you change these remember the mongo schema anti patterns might not change.
 });
 
 const User = mongoose.model<UserDocument>('OauthUsers', userSchema);
