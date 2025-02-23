@@ -31,7 +31,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import ClearIcon from '@mui/icons-material/Clear';
-import { DataGrid } from '@mui/x-data-grid';
 import ErrorMessages from '../constants/ErrorMessages';
 import FormSelector from '../components/form/Selector';
 import ProjectManager from '../components/right/ProjectManager';

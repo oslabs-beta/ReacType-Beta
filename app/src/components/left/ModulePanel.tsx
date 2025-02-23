@@ -9,9 +9,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import ComponentsContainer from './ComponentsContainer';
 import CreatePanel from './CreatePanel';
 import HeaderButton from './HeaderButton';
-import HTMLItem from './HtmlItem';
+//import HTMLItem from './HtmlItem';
 import Grid from '@mui/material/Grid';
-import HTMLTypes from './redux/HTMLTypes';
+//import HTMLTypes from './redux/HTMLTypes';
 
 interface ModulePanelProps {
   isThemeLight: boolean;
