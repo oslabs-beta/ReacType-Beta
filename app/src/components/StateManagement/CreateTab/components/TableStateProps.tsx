@@ -1,11 +1,14 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
-import { DataGrid, GridEditRowsModel } from '@mui/x-data-grid';
+// import { DataGrid, GridEditRowsModel } from '@mui/x-data-grid'; // seems like this get included from somewhere else.
 import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { StatePropsPanelProps, ColumnTab } from '../../../../interfaces/Interfaces';
+import {
+  StatePropsPanelProps,
+  ColumnTab
+} from '../../../../interfaces/Interfaces';
 import { deleteState } from '../../../../redux/reducers/slice/appStateSlice';
 import { RootState } from '../../../../redux/store';
 import { emitEvent } from '../../../../helperFunctions/socket';
@@ -40,13 +43,13 @@ const TableStateProps = (props): JSX.Element => {
       field: 'id',
       headerName: 'ID',
       width: 30,
-      editable: false,
+      editable: false
     },
     {
       field: 'key',
       headerName: 'Key',
       width: 90,
-      editable: true,
+      editable: true
     },
     {
       field: 'value',
@@ -57,13 +60,13 @@ const TableStateProps = (props): JSX.Element => {
         // to display the actual object or array instead of [object Object], leave undefined if it is setter function
         if (param.row.type === 'func') return;
         return JSON.stringify(param.row.value);
-      },
+      }
     },
     {
       field: 'type',
       headerName: 'Type',
       width: 90,
-      editable: false,
+      editable: false
     },
     {
       field: 'delete',
@@ -81,29 +84,29 @@ const TableStateProps = (props): JSX.Element => {
             <ClearIcon style={{ width: `${15}px` }} />
           </Button>
         );
-      },
-    },
+      }
+    }
   ];
 
   const handleDeleteState = (selectedId) => {
     const currentId = state.canvasFocus.componentId;
     const currentComponent = state.components[currentId - 1];
     const filtered = currentComponent.stateProps.filter(
-      (element) => element.id !== selectedId,
+      (element) => element.id !== selectedId
     );
     dispatch(
       deleteState({
         stateProps: filtered,
         rowId: selectedId,
-        contextParam: contextParam,
-      }),
+        contextParam: contextParam
+      })
     );
 
     if (roomCode) {
       emitEvent('deleteStateAction', roomCode, {
         stateProps: filtered,
         rowId: selectedId,
-        contextParam: contextParam,
+        contextParam: contextParam
       });
     }
   };
@@ -148,27 +151,27 @@ const useStyles = makeStyles({
   themeLight: {
     color: 'white',
     '& button:hover': {
-      backgroundColor: 'LightGray',
+      backgroundColor: 'LightGray'
     },
     '& button': {
-      color: 'white',
-    },
+      color: 'white'
+    }
   },
   themeDark: {
     color: 'white',
     '& .MuiTablePagination-root': {
-      color: 'white',
+      color: 'white'
     },
     '& .MuiIconButton-root': {
-      color: 'white',
+      color: 'white'
     },
     '& .MuiSvgIcon-root': {
-      color: 'white',
+      color: 'white'
     },
     '& .MuiDataGrid-window': {
-      backgroundColor: 'rgba(0,0,0,0.54)',
-    },
-  },
+      backgroundColor: 'rgba(0,0,0,0.54)'
+    }
+  }
 });
 
 export default TableStateProps;
