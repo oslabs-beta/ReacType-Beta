@@ -207,6 +207,7 @@ function ContextMenu({
               size="small"
               value={singleMenuValue}
               autoComplete="off"
+              autoFocus
               sx={{ width: '156px', display: 'block', marginLeft: '8px' }}
               onChange={(event) => {
                 singleMenuValueChange(
@@ -240,6 +241,7 @@ function ContextMenu({
               variant="outlined"
               value={singleMenuValue}
               autoComplete="off"
+              autoFocus
               size="small"
               sx={{
                 width: '156px',
@@ -278,6 +280,7 @@ function ContextMenu({
               size="small"
               value={singleMenuValue}
               autoComplete="off"
+              autoFocus
               sx={{ width: '156px', display: 'block', marginLeft: '8px' }}
               onChange={(event) => {
                 singleMenuValueChange(
@@ -312,6 +315,7 @@ function ContextMenu({
               size="small"
               value={singleMenuValue}
               autoComplete="off"
+              autoFocus
               sx={{ width: '156px', display: 'block', marginLeft: '8px' }}
               onChange={(event) => {
                 singleMenuValueChange(
