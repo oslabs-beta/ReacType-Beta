@@ -153,6 +153,7 @@ function ContextMenu({
     // mouseX and mouseY are not use state,
     // so if they change, this will not change unless it rerenders.
 
+    // also, I re added autoFocus prop which makes the input boxes focus when they appear.
     <div
       style={{
         backgroundColor: '#3b3b3b',
